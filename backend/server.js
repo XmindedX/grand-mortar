@@ -42,9 +42,10 @@ app.use(
       "Pragma",
     ],
     credentials: true,
+    optionsSuccessStatus: 204,
   })
 );
-
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
@@ -62,5 +63,7 @@ app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
+
+app.options('*', cors(corsOptions));
 
 app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
