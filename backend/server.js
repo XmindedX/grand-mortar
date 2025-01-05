@@ -21,6 +21,7 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 //create a separate file for this and then import/use that file here
 // mongodb+srv://fatah:<db_password>@cluster0.xft50.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 dotenv.config();
+console.log('Starting server...');
 
 console.log('CLIENT_URL:', process.env.CLIENT_URL);
 
