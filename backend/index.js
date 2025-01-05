@@ -54,13 +54,6 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
-app.use("/api/auth/login", (req, res) => {
-  console.log("Request headers:", req.headers);
-  res.json({ message: 'Login successful' });
-});
-app.post('/api/auth/login', (req, res) => {
-  res.json({ message: 'Login successful' });
-});
 app.use("/api/admin/products", adminProductsRouter);
 app.use("/api/admin/orders", adminOrderRouter);
 app.use("/api/admin/analytics", analyticsRoutes);
