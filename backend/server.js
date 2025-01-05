@@ -40,9 +40,13 @@ app.use(
       "Cache-Control",
       "Expires",
       "Pragma",
+      "Access-Control-Allow-Origin",
+      "Access-Control-Allow-Headers",
+      "Access-Control-Allow-Methods",
     ],
     credentials: true,
-    optionsSuccessStatus: 204,
+    preflightContinue: true,
+    optionsSuccessStatus: 200,
   })
 );
 app.use(cors(corsOptions));
