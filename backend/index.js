@@ -21,9 +21,6 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 //create a separate file for this and then import/use that file here
 // mongodb+srv://fatah:<db_password>@cluster0.xft50.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 dotenv.config();
-console.log('Starting server...');
-
-console.log('CLIENT_URL:', process.env.CLIENT_URL);
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -54,6 +51,13 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
+app.post('/api/auth/login', (req, res) => {
+  console.log('Received login request');
+  // ... (rest of your code)
+  console.log('Sending response');
+  res.json({ message: 'Login successful' });
+});
+
 app.use("/api/admin/products", adminProductsRouter);
 app.use("/api/admin/orders", adminOrderRouter);
 app.use("/api/admin/analytics", analyticsRoutes);
