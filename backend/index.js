@@ -31,7 +31,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [process.env.CLIENT_URL, "https://grand-mortar-b.vercel.app"],
+    origin: (process.env.CLIENT_URL),
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
@@ -51,18 +51,12 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
-app.post('/api/auth/login', (req, res) => {
-  console.log('Received login request');
-  // ... (rest of your code)
-  console.log('Sending response');
-  res.json({ message: 'Login successful' });
-});
 
 app.use("/api/admin/products", adminProductsRouter);
 app.use("/api/admin/orders", adminOrderRouter);
-app.use("/api/admin/analytics", analyticsRoutes);
+// app.use("/api/admin/analytics", analyticsRoutes);
 
-// app.use("/api/analytics", analyticsRoutes)
+app.use("/api/analytics", analyticsRoutes)
 
 app.use("/api/shop/products", shopProductsRouter);
 app.use("/api/shop/cart", shopCartRouter);

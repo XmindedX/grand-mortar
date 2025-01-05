@@ -1,12 +1,12 @@
 {
-  "name": "server",
+  "name": "grand-mortar",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "server.js",
-    "dev": "nodemon server.js"
+    "start": "index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Fatah",
   "license": "ISC",
