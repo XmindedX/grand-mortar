@@ -30,6 +30,7 @@ mongoose
   .catch((error) => console.log(error));
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(
   cors({
@@ -73,5 +74,10 @@ app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});
 
 module.exports = app;
