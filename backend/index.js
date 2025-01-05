@@ -4,6 +4,9 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
 const authRouter = require("./routes/auth/auth-routes");
 const adminProductsRouter = require("./routes/admin/products-routes");
 const adminOrderRouter = require("./routes/admin/order-routes");
@@ -28,6 +31,21 @@ mongoose
   .catch((error) => console.log(error));
 
 const app = express();
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URL,
+    }),
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'Strict',
+    },
+  })
+);
 
 app.use(
   cors({
