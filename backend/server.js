@@ -31,7 +31,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: (process.env.CLIENT_URL, "https://grand-mortar-b.vercel.app"),
+    origin: (process.env.CLIENT_URL, "https://grand-mortar.vercel.app"),
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
