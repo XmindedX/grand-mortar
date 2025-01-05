@@ -87,7 +87,7 @@ function AdminCheckout() {
   return (
     <div className="flex flex-col">
       <div className="grid grid-cols-1 gap-5 p-5 mt-5 sm:grid-cols-2">
-        <Card className="w-full h-48 max-h-full bg-white text-black border-gray-300 shadow-md">
+        <Card className="w-full max-h-full bg-white text-black border-gray-300 shadow-md">
         <div className="flex flex-col gap-4 mt-4 ml-4 mr-4">
           {cartItems && cartItems.items && cartItems.items.length > 0
             ? cartItems.items.map((item) => (
