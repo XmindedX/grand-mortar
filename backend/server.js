@@ -22,6 +22,8 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 // mongodb+srv://fatah:<db_password>@cluster0.xft50.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 dotenv.config();
 
+console.log('CLIENT_URL:', process.env.CLIENT_URL);
+
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB connected"))
@@ -31,7 +33,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: (process.env.CLIENT_URL, "https://grand-mortar.vercel.app"),
+    origin: [process.env.CLIENT_URL, "https://grand-mortar-b.vercel.app"],
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
@@ -48,19 +50,21 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
-app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
+app.use("/api/auth/login", (req, res) => {
+  console.log("Request headers:", req.headers);
+  res.json({ message: 'Login successful' });
+});
 app.post('/api/auth/login', (req, res) => {
   res.json({ message: 'Login successful' });
 });
 app.use("/api/admin/products", adminProductsRouter);
 app.use("/api/admin/orders", adminOrderRouter);
 app.use("/api/admin/analytics", analyticsRoutes);
-app.use("/api/admin/analytics", analyticsRoutes);
 
-app.use("/api/analytics", analyticsRoutes)
+// app.use("/api/analytics", analyticsRoutes)
 
 app.use("/api/shop/products", shopProductsRouter);
 app.use("/api/shop/cart", shopCartRouter);
@@ -69,5 +73,3 @@ app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
-
-app.options('*', cors(corsOptions));
