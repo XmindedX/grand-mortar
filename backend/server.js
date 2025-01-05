@@ -49,6 +49,9 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
+app.post('/api/auth/login', (req, res) => {
+  res.json({ message: 'Login successful' });
+});
 app.use("/api/admin/products", adminProductsRouter);
 app.use("/api/admin/orders", adminOrderRouter);
 app.use("/api/admin/analytics", analyticsRoutes);
