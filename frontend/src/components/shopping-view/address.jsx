@@ -76,7 +76,7 @@ function Address({}) {
     dispatch(createNewOrder(orderData)).then((data) => {
       // console.log(data, "order");
     });
-    navigate("/admin/orders");
+    navigate("/admin/addorder");
   }
 
   function isFormValid() {
