@@ -4,17 +4,5 @@
             "source": "/(.*)",
             "destination": "/index.html"
         }
-    ],
-    "routes": [
-        {
-            "handle": "filesystem"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/app.jsx"
-        },
-        {
-            "src": "/[^.]+", "dest": "/", "status": 200
-        }
     ]
 }
